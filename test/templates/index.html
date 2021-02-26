@@ -1,0 +1,32 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h1 class="title">Works log</h1>
+{% for job in jobs %}
+    <p>
+        <h3>Action # {{ job.id }}</h3>
+        <table>
+            <tr class="text-title">
+                <td>Title of activity</td>
+                <td>Team leader</td>
+                <td>Duration</td>
+                <td>List of collaborators</td>
+                <td>Is finished</td>
+            </tr>
+            <tr>
+                <td>{{ job.job }}</td>
+                <td>{{ job.team_leader }}</td>
+                <td>{{ job.work_size }} hours</td>
+                <td>{{ job.collaborators }}</td>
+                <td>
+                    {% if job.is_finished %}
+                        Finished
+                    {% else %}
+                        Is not finished
+                    {% endif %}
+                </td>
+            </tr>
+        </table>
+    </p>
+{% endfor %}
+{% endblock %}
